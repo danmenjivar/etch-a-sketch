@@ -5,6 +5,7 @@
 
 .grid-container {
     display: grid;
+    width: 960px; 
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     aspect-ratio: 1; /* Makes the grids square*/

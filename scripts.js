@@ -6,6 +6,7 @@
 
 function makeGrid(rows, columns) {
     const container = document.querySelector("#container");
+    container.innerHTML = "";
     container.style.setProperty('--grid-rows', rows);
     container.style.setProperty('--grid-cols', columns);
 
@@ -20,3 +21,21 @@ function makeGrid(rows, columns) {
 
 
 makeGrid(16, 16);
+
+
+
+const clearButton = document.querySelector("#clear-btn");
+clearButton.addEventListener("click", () => onClearButtonClick());
+
+
+function onClearButtonClick() {
+    let gridsize = prompt("How large should the grid be? (n*n)");
+
+    console.log(typeof gridsize);
+
+    if (isNaN(gridsize) || gridsize > 100 || gridsize < 0) {
+        gridsize = 16;
+    }
+    gridsize = Math.trunc(gridsize); // prevents errors from floats
+    makeGrid(gridsize, gridsize)
+}
