@@ -1,6 +1,23 @@
 
 // Make a 16x16 grid of square divs using JS
 
+function generateRandomColor() {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+
+function onMouseHover(elem) {
+
+    console.log(elem.style.backgroundColor);
+    let cellColor = elem.style.backgroundColor;
+    if (!cellColor) {
+        elem.style.backgroundColor = generateRandomColor();
+    } else {
+
+    }
+
+
+}
 
 
 
@@ -14,13 +31,14 @@ function makeGrid(rows, columns) {
     for (let i = 0; i < cells; i++) {
         let cell = document.createElement("div");
         cell.classList.add("grid-item");
-        cell.addEventListener("mouseover", () => cell.classList.add("hovered"));
+        cell.addEventListener("mouseover", () => onMouseHover(cell));
         container.appendChild(cell);
     }
 }
 
 
 makeGrid(16, 16);
+
 
 
 
@@ -33,7 +51,7 @@ function onClearButtonClick() {
 
     console.log(typeof gridsize);
 
-    if (isNaN(gridsize) || gridsize > 100 || gridsize < 0) {
+    if (isNaN(gridsize) || gridsize > 100 || gridsize < 1) {
         gridsize = 16;
     }
     gridsize = Math.trunc(gridsize); // prevents errors from floats
