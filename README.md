@@ -57,11 +57,6 @@ An etch-a-sketch browser implementation to practice DOM manipulation.
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
 
 ## :white_check_mark: Requirements ##
 
@@ -77,10 +72,10 @@ $ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/etch-a-sketch
 $ cd etch-a-sketch
 
 # Install dependencies
-$ yarn
+$ 
 
 # Run the project
-$ yarn start
+$ 
 
 # The server will initialize in the <http://localhost:3000>
 ```
