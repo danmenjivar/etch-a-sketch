@@ -13,3 +13,7 @@
 .grid-item {
     border: 1px solid black;
 }
+
+.hovered {
+    background-color: cornflowerblue;
+}

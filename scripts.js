@@ -13,6 +13,7 @@ function makeGrid(rows, columns) {
     for (let i = 0; i < cells; i++) {
         let cell = document.createElement("div");
         cell.classList.add("grid-item");
+        cell.addEventListener("mouseover", () => cell.classList.add("hovered"));
         container.appendChild(cell);
     }
 }
