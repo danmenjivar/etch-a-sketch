@@ -1,4 +1,4 @@
-# Google Homepage
+# Etch A Sketch
 
 ### [Live Demo](https://danmenjivar.github.io/etch-a-sketch/)
 
