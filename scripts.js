@@ -49,10 +49,10 @@ function onResizeGridClick() {
   );
 
   if (isNaN(gridsizePrompt) || gridsizePrompt > 100 || gridsizePrompt < 1) {
-    gridsize = 16;
+    // gridsize = 16;
   } else {
-    gridsize = Math.trunc(gridsizePrompt); // prevents errors from floats
-    makeGrid(gridsize, gridsize);
+    gridSize = Math.trunc(gridsizePrompt); // prevents errors from floats
+    makeGrid(gridSize, gridSize);
   }
 }
 // #endregion
