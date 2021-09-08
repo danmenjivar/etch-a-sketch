@@ -1,59 +1,62 @@
+let gridSize = 16;
 
-// Make a 16x16 grid of square divs using JS
-
+/**
+ * Generates pseudo-random hex color values
+ * @returns Randomly generated Hex value color code
+ */
 function generateRandomColor() {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
 
-
+//#region - EVENT LISTENERS
 function onMouseHover(elem) {
-
-    console.log(elem.style.backgroundColor);
-    let cellColor = elem.style.backgroundColor;
-    if (!cellColor) {
-        elem.style.backgroundColor = generateRandomColor();
-    } else {
-
-    }
-
-
+  let cellColor = elem.style.backgroundColor;
+  if (!cellColor) {
+    elem.style.backgroundColor = generateRandomColor();
+  }
 }
-
-
-
-function makeGrid(rows, columns) {
-    const container = document.querySelector("#container");
-    container.innerHTML = "";
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', columns);
-
-    let cells = rows * columns;
-    for (let i = 0; i < cells; i++) {
-        let cell = document.createElement("div");
-        cell.classList.add("grid-item");
-        cell.addEventListener("mouseover", () => onMouseHover(cell));
-        container.appendChild(cell);
-    }
-}
-
-
-makeGrid(16, 16);
-
-
-
 
 const clearButton = document.querySelector("#clear-btn");
 clearButton.addEventListener("click", () => onClearButtonClick());
 
+const setGridSizeButton = document.querySelector("#grid-btn");
+setGridSizeButton.addEventListener("click", () => onResizeGridClick());
+// #endregion
 
-function onClearButtonClick() {
-    let gridsize = prompt("How large should the grid be? (n*n)");
+function makeGrid(rows, columns) {
+  const container = document.querySelector("#container");
+  container.innerHTML = "";
+  container.style.setProperty("--grid-rows", rows);
+  container.style.setProperty("--grid-cols", columns);
 
-    console.log(typeof gridsize);
-
-    if (isNaN(gridsize) || gridsize > 100 || gridsize < 1) {
-        gridsize = 16;
-    }
-    gridsize = Math.trunc(gridsize); // prevents errors from floats
-    makeGrid(gridsize, gridsize)
+  let cells = rows * columns;
+  for (let i = 0; i < cells; i++) {
+    let cell = document.createElement("div");
+    cell.classList.add("grid-item");
+    cell.addEventListener("mouseover", () => onMouseHover(cell));
+    container.appendChild(cell);
+  }
 }
+
+// #region - LISTENER HELPERS
+function onClearButtonClick() {
+  makeGrid(gridSize, gridSize);
+}
+
+function onResizeGridClick() {
+  let gridsizePrompt = prompt(
+    "How large should the grid be? (n*n where n < 100)"
+  );
+
+  if (isNaN(gridsizePrompt) || gridsizePrompt > 100 || gridsizePrompt < 1) {
+    gridsize = 16;
+  } else {
+    gridsize = Math.trunc(gridsizePrompt); // prevents errors from floats
+    makeGrid(gridsize, gridsize);
+  }
+}
+// #endregion
+
+(function main() {
+  makeGrid(gridSize, gridSize);
+})();
